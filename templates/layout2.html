@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/bootstrap 2/css/bootstrap.min.css">
+    <style>
+        body{
+            padding-top: 60px;
+        }
+        .tr-head{
+            background: #dff0d8;
+        }
+    </style>
+    <link rel="stylesheet" href="../static/bootstrap 2/css/bootstrap-responsive.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="">
+                    IDGS802
+                </a>
+
+                <ul class="nav">
+                    <li class="active">
+                        <a class="" href="/">
+                            <i class="icon-home icon-white">
+                                
+                            </i>
+                            Inicio
+                        </a>
+                    </li>
+                    <li class="">
+                        <a class="" href="">
+                            <i class="icon-user icon-white">
+                               
+                            </i>
+                            Usuarios
+                        </a>
+                    </li>
+                    <li class="">
+                        <a class="" href="/alumnos">
+                            <i class="icon-user icon-white">
+                                
+                            </i>
+                            Alumnos
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container">
+            {%with messages = get_flashed_messages()%}
+            {%if messages %}
+            {%for messages in messages%}
+            <div class="alert alert-success">
+                {{messages}}
+            </div>
+            {%endfor%}
+            {%endif%}
+            {%endwith%}
+            {% block content %}
+
+            {% endblock %}
+        </div>
+    </div>
+</body>
+</html>
