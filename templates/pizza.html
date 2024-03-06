@@ -1,0 +1,50 @@
+{% extends 'layout2.html' %}
+{% block content %}
+{%from "_macros.html" import input_forms%}
+
+<div class="container">
+    <div class="row">
+        <form action="">
+            <br>
+            <div class="span4">
+                {{input_forms(form.nombre, class="form-control")}}
+                {{input_forms(form.t_pizza, class="form-control")}}
+            </div>
+            <div class="span4">
+                {{input_forms(form.direccion, class="form-control")}}
+                {{input_forms(form.ingredientes, class="form-control")}}
+            </div>
+            <div class="span4">
+                {{input_forms(form.telefono, class="form-control")}}
+                {{input_forms(form.cantidad, class="form-control")}}
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <h3>Pizza ventas</h3>
+        <table class="table table-striped table-hover table-bordered">
+            <thead>
+            <tr>
+                <th>Tamaño</th>
+                <th>Ingredientes</th>
+                <th>Num Pizzas</th>
+                <th>SubTotal</th>
+                
+                
+            </tr>
+            </thead>
+            <tbody>
+                {% for profe in profesor %}
+                <tr>
+                    <td>{{profe.nombre}}</td>
+                    <td>{{profe.telefono}}</td>
+                    <td>{{profe.sueldo}}</td>
+                    <td>{{profe.tiempo}}</td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{%endblock%}

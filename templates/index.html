@@ -6,6 +6,11 @@
             <form name="registro" action="/index" id="registro" method="POST" novalidate>
                 <div class="row control-group">
                     <div class="form-group col-xs-12 float-label-form-group controls">
+                        {{input_forms(form.id, class="form-control")}}
+                    </div>
+                </div>
+                <div class="row control-group">
+                    <div class="form-group col-xs-12 float-label-form-group controls">
                         {{input_forms(form.nombre, class="form-control")}}
                     </div>
                 </div>

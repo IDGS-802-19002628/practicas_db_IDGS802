@@ -1,0 +1,44 @@
+{% extends 'layout2.html' %}
+{% block content %}
+{%from "_macros.html" import input_forms%}
+    <div class="container">
+        <div class="row">
+            <form name="eliminar" action="/eliminar_pizza" id="eliminar" method="POST" novalidate>
+                <div class="row">
+       
+                    <br>
+                    <h1>Venta Pizzas</h1>
+                    {{input_forms(form.id, class="form-control", type="hidden")}}
+                    <div class="span4" type="hidden">
+                      
+                        {{input_forms(form.nombre, class="form-control")}}
+                        {{input_forms(form.t_pizza, class="form-control")}}
+                    </div>
+                    <div class="span4">
+                        {{input_forms(form.direccion, class="form-control")}}
+                        <label for="">Ingredientes</label>
+                        {% for choice in form.ingredientes %}
+                        
+                <div class="form-check">
+                    
+                    <input class="form-check-input" type="checkbox" id="{{ choice.id }}" name="{{ form.ingredientes.name }}" value="{{ choice.data }}"
+                        {% if choice.checked %}checked{% endif %}>
+                    <label class="form-check-label" for="{{ choice.id }}">
+                        {{ choice.label.text }}
+                    </label>
+                </div>
+            {% endfor %}
+                    </div>
+                    <div class="span4">
+                        {{input_forms(form.telefono, class="form-control")}}
+                        {{input_forms(form.cantidad, class="form-control")}}
+                    </div>
+                
+            </div>
+                <input type="hidden"  name="csrf_token" value="{{csrf_token()}}"/>
+                <input type="submit" id="eliminar" name="eliminar" value="Eliminar" class="btn btn-danger"/>
+                <a href="ABC_Pizzas.html" class="btn btn-success">Cancelar</a>
+            </form>
+        </div>
+    </div>
+    {% endblock %}

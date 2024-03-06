@@ -1,0 +1,41 @@
+{% extends 'layout2.html' %}
+{% block content %}
+{%from "_macros.html" import input_forms%}
+
+<div class="container">
+    <div class="row">
+        <h3>Pizza ventas</h3>
+        <table class="table table-striped table-hover table-bordered">
+            <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Telefono</th>
+                <th>Tamaño de Pizza</th>
+                <th>Ingredientes</th>
+                <th>Num Pizzas</th>
+                <th>Costo Total</th>
+                <th>Modificar</th>
+                <th>Eliminar</th>
+                
+                
+            </tr>
+            </thead>
+            <tbody>
+                {% for p in ventas %}
+                <tr>
+                    <td>{{p.nombre}}</td>
+                    <td>{{p.telefono}}</td>
+                    <td>{{p.tam_pizza}}</td>
+                    <td>{{p.ingredientes}}</td>
+                    <td>{{p.cantidad}}</td>
+                    <td>{{p.costo}}</td>
+                    <td><a class="btn btn-danger" href="/eliminar_pizza?id={{p.id}}">Eliminar</a></td>
+                    <td><a class="btn btn-warning" href="/modificar?id={{p.id}}">Modificar</a></td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{%endblock%}
