@@ -1,10 +1,18 @@
 from wtforms import Form
-from wtforms import StringField, TextAreaField, SelectField, RadioField, EmailField, IntegerField, SelectMultipleField
+from wtforms import StringField, TextAreaField, SelectField, RadioField, EmailField, IntegerField, SelectMultipleField, DateField
 from wtforms import validators
 
 class UserForm(Form):
     id = IntegerField('', [validators.number_range(min=1, max=20, message='valor no valido')])
     nombre = StringField("Nombre",[
+        validators.DataRequired(message='El campo es requerido'),
+        validators.length(min=4, max=10, message="Ingresa nombre valido")
+    ])
+    mes = StringField("Mes",[
+        validators.DataRequired(message='El campo es requerido'),
+        validators.length(min=4, max=10, message="Ingresa nombre valido")
+    ])
+    dia = StringField("Dia",[
         validators.DataRequired(message='El campo es requerido'),
         validators.length(min=4, max=10, message="Ingresa nombre valido")
     ])
@@ -19,6 +27,8 @@ class UserForm(Form):
     
     ingredientes = SelectMultipleField('Checkboxes', choices=[('Jamon', 'Jamon $10'), ('Piña', 'Piña $10'), ('Champiñones', 'Champiñones $10')])
     cantidad = IntegerField('Cantidad pizzas', [validators.DataRequired(message='El campo es requerido')])
-
+    fecha = DateField('Fecha', format='%Y-%m-%d')
+    nombre_dia = StringField('Nombre del día')
+    nombre_mes = StringField('Nombre del mes')
 
     

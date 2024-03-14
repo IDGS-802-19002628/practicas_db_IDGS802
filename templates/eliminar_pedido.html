@@ -7,9 +7,8 @@
                 <div class="row">
        
                     <br>
-                    <h1>Venta Pizzas</h1>
                     {{input_forms(form.id, class="form-control", type="hidden")}}
-                    <div class="span4" type="hidden">
+                    <div class="span4 mx-4" type="hidden">
                       
                         {{input_forms(form.nombre, class="form-control")}}
                         {{input_forms(form.t_pizza, class="form-control")}}
@@ -29,15 +28,17 @@
                 </div>
             {% endfor %}
                     </div>
-                    <div class="span4">
+                    <div class="span4 mx-4">
                         {{input_forms(form.telefono, class="form-control")}}
                         {{input_forms(form.cantidad, class="form-control")}}
+                        {{ input_forms(form.fecha, class="form-control") }}
                     </div>
                 
             </div>
+                <br><br>
                 <input type="hidden"  name="csrf_token" value="{{csrf_token()}}"/>
                 <input type="submit" id="eliminar" name="eliminar" value="Eliminar" class="btn btn-danger"/>
-                <a href="ABC_Pizzas.html" class="btn btn-success">Cancelar</a>
+                <a href="/pizza" class="btn btn-warning">Cancelar</a>
             </form>
         </div>
     </div>

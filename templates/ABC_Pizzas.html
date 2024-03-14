@@ -4,38 +4,55 @@
 
 <div class="container">
     <div class="row">
-        <h3>Pizza ventas</h3>
+        <form action="/pizzas" id="pizzas" name="pizzas" method="post" novalidate>
+            {{form.csrf_token}}
+            <div class="row align-items-center">
+                <div class="col-7">
+                    {{ input_forms(form.dia, placeholder="Buscar:", class="form-control") }}
+                </div>
+                <div class="col-3">
+                    <div class="input-group">
+                        <br>
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-warning">Buscar</button>
+                        </div>
+                    </div>
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                </div>
+            </div>
+            
+        </form>
+       
         <table class="table table-striped table-hover table-bordered">
             <thead>
             <tr>
                 <th>Nombre</th>
-                <th>Telefono</th>
+                <th>Teléfono</th>
                 <th>Tamaño de Pizza</th>
                 <th>Ingredientes</th>
                 <th>Num Pizzas</th>
                 <th>Costo Total</th>
-                <th>Modificar</th>
-                <th>Eliminar</th>
-                
+                <th>Fecha</th>
                 
             </tr>
             </thead>
             <tbody>
-                {% for p in ventas %}
+                {% for b in busqueda %}
                 <tr>
-                    <td>{{p.nombre}}</td>
-                    <td>{{p.telefono}}</td>
-                    <td>{{p.tam_pizza}}</td>
-                    <td>{{p.ingredientes}}</td>
-                    <td>{{p.cantidad}}</td>
-                    <td>{{p.costo}}</td>
-                    <td><a class="btn btn-danger" href="/eliminar_pizza?id={{p.id}}">Eliminar</a></td>
-                    <td><a class="btn btn-warning" href="/modificar?id={{p.id}}">Modificar</a></td>
+                    <td>{{ b.nombre }}</td>
+                    <td>{{ b.telefono }}</td>
+                    <td>{{ b.tam_pizza }}</td>
+                    <td>{{ b.ingredientes }}</td>
+                    <td>{{ b.cantidad }}</td>
+                    <td>${{ b.costo }}</td>
+                    <td>{{ b.create_date }}</td>
+                    
                 </tr>
-                {%endfor%}
+                {% endfor %}
             </tbody>
         </table>
     </div>
 </div>
+
 
 {%endblock%}

@@ -1,0 +1,42 @@
+{% extends 'layout2.html' %}
+{% block content %}
+{%from "_macros.html" import input_forms%}
+<div class="container">
+    <div class="row">
+        
+        <form name="modificar" action="/modificar_pizza" id="modificar" method="POST" novalidate>
+            <div class="row mt-4">
+                {{ input_forms(form.id, class="form-control", type="hidden") }}
+                <div class="col-md-4">
+                    {{ input_forms(form.nombre, class="form-control") }}
+                    {{ input_forms(form.t_pizza, class="form-control") }}
+                </div>
+                <div class="col-md-4">
+                    {{ input_forms(form.direccion, class="form-control") }}
+                    <label for="">Ingredientes</label>
+                    {% for choice in form.ingredientes %}
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="{{ choice.id }}" name="{{ form.ingredientes.name }}" value="{{ choice.data }}"
+                                {% if choice.checked %}checked{% endif %}>
+                            <label class="form-check-label" for="{{ choice.id }}">
+                                {{ choice.label.text }}
+                            </label>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="col-md-4">
+                    {{ input_forms(form.telefono, class="form-control") }}
+                    {{ input_forms(form.cantidad, class="form-control") }}
+                </div>
+            </div> <br>
+            <div class="row mt-3">
+               
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                <input type="submit" id="modificar" name="modificar" value="Modificar" class="btn btn-warning mx-4"/>
+                <a href="/pizzas" class="btn btn-success">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+    {% endblock %}
